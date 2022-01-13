@@ -22,5 +22,11 @@ pipeline {
 				sh "kubectl apply -f deployment.yaml && kubectl apply -f service.yaml"
 			}
 		}
+		stage("get info") {
+			steps {
+			    sh "minikube ip"
+				sh "kubectl get service"
+			}
+		}
 	}
 }
