@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage("build docker image") {
 			steps {
-				sh "docker build -t 4lb3rt0/technical-test-docker.jar:v2.0 ." 
+				sh "docker build -t technical-test-docker.jar:v2.0 ." 
 			}
 		}
 		stage("deploying in k8s") {
