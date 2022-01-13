@@ -5,6 +5,10 @@ pipeline {
 		maven 'Maven'
 	}
 	
+	environment {
+		DOCKER_CREDENTIAL_ID = 'dockerhub-token'
+	}
+	
 	stages{
 		stage("packaging the app") {
 			steps {
