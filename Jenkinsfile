@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage("build docker image") {
 			steps {
-				sh "docker build -t technical-test-docker.jar:v3.0 ." 
+				sh "sudo docker build -t technical-test-docker.jar:v3.0 ." 
 			}
 		}
 		stage("deploying in k8s") {
