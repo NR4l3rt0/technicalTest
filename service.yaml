@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: technical-test-k8s-service
+spec:
+  selector:
+    app: technical-test-k8s
+  ports:
+    - protocol: "TCP"
+      port: 8081        # the port that the service is running in the cluster
+      targetPort: 8081  # the port exposed by the service
+  type: NodePort
