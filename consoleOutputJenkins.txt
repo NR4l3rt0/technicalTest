@@ -1,0 +1,217 @@
+Started by user admin
+Obtained Jenkinsfile from git https://github.com/NR4l3rt0/technicalTest.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/technicalTestCICD
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/technicalTestCICD/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/NR4l3rt0/technicalTest.git # timeout=10
+Fetching upstream changes from https://github.com/NR4l3rt0/technicalTest.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/NR4l3rt0/technicalTest.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b6cf8682cb2471cf527ca8a766f9a4189ff302ca (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b6cf8682cb2471cf527ca8a766f9a4189ff302ca # timeout=10
+Commit message: "inform url"
+ > git rev-list --no-walk 74db5164c5c9ace6a8034ee33d83a1a567a4b129 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (packaging the app)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.viewnext:technicalTest >---------------------
+[INFO] Building technicalTest 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ technicalTest ---
+[INFO] Deleting /var/lib/jenkins/workspace/technicalTestCICD/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ technicalTest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ technicalTest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /var/lib/jenkins/workspace/technicalTestCICD/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ technicalTest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/technicalTestCICD/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ technicalTest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/technicalTestCICD/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ technicalTest ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.viewnext.technicalTest.TechnicalTestApplicationTests
+10:18:04.928 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:18:04.955 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:18:05.056 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.viewnext.technicalTest.TechnicalTestApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+10:18:05.090 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.viewnext.technicalTest.TechnicalTestApplicationTests], using SpringBootContextLoader
+10:18:05.103 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.viewnext.technicalTest.TechnicalTestApplicationTests]: class path resource [com/viewnext/technicalTest/TechnicalTestApplicationTests-context.xml] does not exist
+10:18:05.105 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.viewnext.technicalTest.TechnicalTestApplicationTests]: class path resource [com/viewnext/technicalTest/TechnicalTestApplicationTestsContext.groovy] does not exist
+10:18:05.105 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.viewnext.technicalTest.TechnicalTestApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:18:05.110 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.viewnext.technicalTest.TechnicalTestApplicationTests]: TechnicalTestApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:18:05.253 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.viewnext.technicalTest.TechnicalTestApplicationTests]
+10:18:05.436 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/technicalTestCICD/target/classes/com/viewnext/TechnicalTestApplication.class]
+10:18:05.438 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.viewnext.TechnicalTestApplication for test class com.viewnext.technicalTest.TechnicalTestApplicationTests
+10:18:05.838 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.viewnext.technicalTest.TechnicalTestApplicationTests]: using defaults.
+10:18:05.839 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+10:18:05.878 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+10:18:05.880 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+10:18:05.880 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6337c201, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5c669da8, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@31920ade, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1d483de4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4032d386, org.springframework.test.context.support.DirtiesContextTestExecutionListener@28d18df5, org.springframework.test.context.event.EventPublishingTestExecutionListener@934b6cb, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@55cf0d14, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3b74ac8, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@27adc16e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@b83a9be, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2609b277, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1fd14d74]
+10:18:05.889 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2931522b testClass = TechnicalTestApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7674b62c testClass = TechnicalTestApplicationTests, locations = '{}', classes = '{class com.viewnext.TechnicalTestApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@236e3f4e, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dd0c991, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7e9131d5, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@1bb266b3, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7690781, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7fac631b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+10:18:06.123 [main] DEBUG org.springframework.boot.ApplicationServletEnvironment - Activating profiles []
+10:18:06.126 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.2)
+
+2022-01-13 10:18:06.948  INFO 15597 --- [           main] c.v.t.TechnicalTestApplicationTests      : Starting TechnicalTestApplicationTests using Java 11.0.13 on nra with PID 15597 (started by jenkins in /var/lib/jenkins/workspace/technicalTestCICD)
+2022-01-13 10:18:06.950  INFO 15597 --- [           main] c.v.t.TechnicalTestApplicationTests      : No active profile set, falling back to default profiles: default
+2022-01-13 10:18:10.587  INFO 15597 --- [           main] c.v.t.TechnicalTestApplicationTests      : Started TechnicalTestApplicationTests in 4.459 seconds (JVM running for 7.516)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.62 s - in com.viewnext.technicalTest.TechnicalTestApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ technicalTest ---
+[INFO] Building jar: /var/lib/jenkins/workspace/technicalTestCICD/target/technical-test-docker.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.6.2:repackage (repackage) @ technicalTest ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.635 s
+[INFO] Finished at: 2022-01-13T10:18:13+01:00
+[INFO] ------------------------------------------------------------------------
++ echo jar packaged
+jar packaged
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build docker image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t 4lb3rt0/technical-test-docker.jar:v2.0 .
+Sending build context to Docker daemon  17.91MB
+Step 1/5 : FROM openjdk:11
+ ---> 5505a9a39df1
+Step 2/5 : EXPOSE 8081
+ ---> Using cache
+ ---> ea9bd1cad768
+Step 3/5 : ARG JAR_FILE=target/technical-test-docker.jar
+ ---> Using cache
+ ---> a34f742e46d8
+Step 4/5 : COPY ${JAR_FILE} technical-test-docker.jar
+ ---> 8ad15770f811
+Step 5/5 : ENTRYPOINT ["java", "-jar", "/technical-test-docker.jar"]
+ ---> Running in 194b7c3d0df4
+Removing intermediate container 194b7c3d0df4
+ ---> 5c3600d03afc
+Successfully built 5c3600d03afc
+Successfully tagged 4lb3rt0/technical-test-docker.jar:v2.0
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploying in k8s)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ minikube start
+* minikube v1.24.0 on Ubuntu 20.04
+* Using the docker driver based on existing profile
+* Starting control plane node minikube in cluster minikube
+* Pulling base image ...
+* docker "minikube" container is missing, will recreate.
+* Creating docker container (CPUs=2, Memory=2200MB) ...
+* Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
+* Verifying Kubernetes components...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* Enabled addons: storage-provisioner, default-storageclass
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+[Pipeline] sh
++ kubectl apply -f deployment.yaml
+deployment.apps/technical-test-k8s unchanged
++ kubectl apply -f service.yaml
+service/technical-test-k8s-service unchanged
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (get info)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ minikube ip
+192.168.49.2
+[Pipeline] sh
++ kubectl get service
+NAME                         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes                   ClusterIP   10.96.0.1       <none>        443/TCP          11m
+technical-test-k8s-service   NodePort    10.109.168.71   <none>        8081:30572/TCP   11m
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
