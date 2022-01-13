@@ -13,7 +13,7 @@ spec:
         app: technical-test-k8s
     spec:
       containers:
-      - image: technical-test-docker.jar:v2.0
+      - image: 4lb3rt0/technical-test-docker.jar:v2.0
         name: technical-test-docker-container
         ports:
           - containerPort: 8081

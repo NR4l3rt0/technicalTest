@@ -6,18 +6,19 @@ pipeline {
 	}
 	
 	environment {
-		DOCKER_CREDENTIAL_ID = 'dockerhub-token'
+		DOCKER_HUB_LOGIN = credentials('dockerhub-token')
 	}
 	
 	stages{
 		stage("packaging the app") {
 			steps {
-				sh "mvn clean package && echo 'jar built'"
+				sh "mvn clean package && echo 'jar packaged'"
 			}
 		}
 		stage("build docker image") {
 			steps {
-				sh "docker build -t technical-test-docker.jar:v2.0 ." 
+				sh "docker build -t 4lb3rt0/technical-test-docker.jar:v2.0 ." 
+				sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
 			}
 		}
 		stage("deploying in k8s") {
