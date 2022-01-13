@@ -8,12 +8,12 @@ pipeline {
 	stages{
 		stage("packaging the app") {
 			steps {
-				sh "mvn clean install"
+				sh "mvn clean install && echo 'jar built'"
 			}
 		}
-		stage("build docker image and push to Dockerhub") {
+		stage("build docker image") {
 			steps {
-				sh "docker build -t 4lb3rt0/technical-test-docker.jar:v3.0 . && docker push 4lb3rt0/technical-test-docker.jar:v3.0" 
+				sh "docker build -t technical-test-docker.jar:v3.0 ." 
 			}
 		}
 		stage("deploying in k8s") {

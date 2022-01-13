@@ -13,7 +13,8 @@ spec:
         app: technical-test-k8s
     spec:
       containers:
-      - image: 4lb3rt0/technical-test-docker.jar:v2.0
+      - image: technical-test-docker.jar:v3.0
         name: technical-test-docker-container
+        imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8081
+          - containerPort: 8081
